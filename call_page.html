@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- title bar -->
+    <div class="font-sans bg-gray-50 p-6">
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 mx-auto">
+        <div
+          class="flex justify-between items-center p-4 border-b border-gray-200"
+        >
+          <div>
+            <h2 class="text-xl font-bold">Call History</h2>
+            <p class="pt-1 pb-2 text-sm font-bold">7 Calls Today | 1 Missed</p>
+          </div>
+
+          <button
+            class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out"
+          >
+            <i class="fa-solid fa-grip"></i>
+            <span>New Call</span>
+          </button>
+        </div>
+
+        <!-- fillter button -->
+        <div
+          class="p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 border-b border-gray-100"
+        >
+          <div class="flex flex-wrap space-x-2">
+            <button
+              class="px-3 py-1 text-sm font-medium border border-blue-800 rounded-full bg-blue-200 text-blue-800 shadow-sm"
+            >
+              All
+            </button>
+            <button class="px-3 py-1 text-sm font-medium border rounded-full">
+              Missed
+            </button>
+            <button class="px-3 py-1 text-sm font-medium border rounded-full">
+              Prospect
+            </button>
+            <button class="px-3 py-1 text-sm font-medium border rounded-full">
+              Lead
+            </button>
+            <button class="px-3 py-1 text-sm font-medium border rounded-full">
+              Client
+            </button>
+            <button class="px-3 py-1 text-sm font-medium border rounded-full">
+              No Account Created
+            </button>
+          </div>
+
+          <div class="relative flex-grow max-w-xs">
+            <i
+              class="fas fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              placeholder="Search"
+              class="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg"
+            />
+          </div>
+        </div>
+
+        <!-- table -->
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50 text-xs tracking-wider">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left">Recent</th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left flex justify-between items-center"
+                >
+                  <div class="flex items-center">Time (EST)</div>
+                  <i class="fa-solid fa-up-down"></i>
+                </th>
+                <th scope="col" class="px-6 py-3 text-left">Account Status</th>
+                <th scope="col" class="px-6 py-3 text-right">Recording</th>
+                <th scope="col" class="pr-6 py-3 w-5"></th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-100 text-sm">
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >254-439-9092</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Miles Vent</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-solid fa-check text-green-800"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-green-800"
+                  >
+                    Client
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >884-288-7422</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Jack Black</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-solid fa-check text-green-800"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-green-800"
+                  >
+                    Client
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >884-323-3222</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Unknown</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-solid fa-exclamation"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-gray-800"
+                  >
+                    No Information
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-voicemail"></i>
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >884-288-7422</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Unknown</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-solid fa-exclamation"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-gray-800"
+                  >
+                    No Information
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >884-288-7422</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Fin Isle</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-regular fa-user"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-blue-800"
+                  >
+                    Lead
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="">
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    <div>
+                      <a href="#" class="text-blue-600 font-medium underline"
+                        >884-288-7422</a
+                      >
+                      <p class="text-xs text-gray-500">Name: Unknown</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  Fri Dec 16, 2022 - 18:59:44
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap">
+                  <i class="fa-regular fa-star text-purple-800"></i>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-purple-800"
+                  >
+                    Prospect
+                  </span>
+                </td>
+                <td class="px-6 py-3 whitespace-nowrap text-right">
+                  <div class="flex items-center justify-end space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="text-gray-600">0:00 / 2:48</span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
