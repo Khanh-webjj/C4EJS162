@@ -5,24 +5,23 @@ export default class CallBox {
 
         this.searchInput = this.callBox.querySelector("input[type='text']");
         this.rows = [...this.callBox.querySelectorAll("tbody tr")];
-        this.filterButtons = this.callBox.querySelectorAll("[data-filter]");
+        this.filterButtons = [...this.callBox.querySelectorAll("[data-filter]")];
 
         this.activeFilter = "all";
 
         this.bindEvents();
+        this.updateFilterUI(); // render trạng thái ban đầu
     }
 
     bindEvents() {
-        // search theo từng ký tự
         this.searchInput?.addEventListener("input", () => {
             this.applyFilters();
         });
 
-        // click filter button
         this.filterButtons.forEach(btn => {
             btn.addEventListener("click", () => {
                 this.activeFilter = btn.dataset.filter;
-                this.updateFilterUI(btn);
+                this.updateFilterUI();   //  render theo state
                 this.applyFilters();
             });
         });
@@ -32,45 +31,45 @@ export default class CallBox {
         const keyword = this.searchInput.value.trim().toLowerCase();
 
         this.rows.forEach(row => {
-            const rowText = row.innerText.toLowerCase();
+            const phone = row.querySelector("a")?.innerText.toLowerCase() || "";
+            const name = row.querySelector("p")?.innerText.toLowerCase() || "";
 
-            // lấy account status từ cột thứ 3
+            const matchSearch =
+                phone.includes(keyword) ||
+                name.includes(keyword);
+
             const statusCell = row.querySelector("td:nth-child(3) span");
             const accountStatus = statusCell
                 ? statusCell.innerText.toLowerCase()
                 : "";
 
-            const matchKeyword = rowText.includes(keyword);
             const matchStatus =
                 this.activeFilter === "all" ||
                 accountStatus === this.activeFilter;
 
-            row.classList.toggle("hidden", !(matchKeyword && matchStatus));
+            row.classList.toggle("hidden", !(matchSearch && matchStatus));
         });
     }
 
-    updateFilterUI(activeBtn) {
+    updateFilterUI() {
         this.filterButtons.forEach(btn => {
-            btn.classList.remove(
-                "bg-blue-200",
-                "text-blue-800",
-                "border-blue-800"
-            );
-            btn.classList.add("border", "text-gray-600");
-        });
+            const isActive = btn.dataset.filter === this.activeFilter;
 
-        activeBtn.classList.add(
-            "bg-blue-200",
-            "text-blue-800",
-            "border-blue-800"
-        );
+            btn.classList.toggle("bg-blue-200", isActive);
+            btn.classList.toggle("text-blue-800", isActive);
+            btn.classList.toggle("border-blue-800", isActive);
+
+            btn.classList.toggle("text-gray-600", !isActive);
+        });
     }
 
     reset() {
         this.searchInput.value = "";
         this.activeFilter = "all";
+        this.updateFilterUI();
         this.applyFilters();
     }
 }
+
 
 

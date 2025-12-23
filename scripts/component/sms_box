@@ -1,0 +1,92 @@
+export default class SMSBox {
+    constructor(selector = "#smsBox") {
+        this.root = document.querySelector(selector);
+        if (!this.root) return;
+
+        this.chatContainer = this.root.querySelector(
+            ".sms-main-chat .flex-grow.overflow-y-auto.p-4"
+        );
+
+        this.input = this.root.querySelector(
+            'input[placeholder="Text Chat"]'
+        );
+
+        this.sendBtn = this.root.querySelector(
+            "button i.fa-paper-plane"
+        )?.parentElement;
+
+        if (!this.chatContainer || !this.input || !this.sendBtn) {
+            console.warn("SMSBox: Missing elements");
+            return;
+        }
+
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // Click send
+        this.sendBtn.addEventListener("click", () => {
+            this.sendMessage();
+        });
+
+        // Press Enter to send
+        this.input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                this.sendMessage();
+            }
+        });
+    }
+
+    sendMessage() {
+        const text = this.input.value.trim();
+        if (!text) return;
+
+        const messageNode = this.createMessage(text);
+
+        this.chatContainer.appendChild(messageNode);
+
+        // scroll xuống cuối
+        this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
+
+        this.input.value = "";
+    }
+
+    createMessage(text) {
+        const wrapper = document.createElement("div");
+        wrapper.className =
+            "flex flex-col items-end space-y-2 mb-4 max-w-lg ml-auto";
+
+        const bubble = document.createElement("div");
+        bubble.className = "p-3 text-sm text-gray-800";
+        bubble.innerText = text;
+
+        const meta = document.createElement("div");
+        meta.className = "flex flex-col items-end";
+
+        const time = document.createElement("span");
+        time.className = "text-xs text-gray-500";
+        time.innerText = this.getCurrentTime();
+
+        const status = document.createElement("span");
+        status.className =
+            "text-xs font-medium text-gray-500 mt-0.5";
+        status.innerText = "Sent";
+
+        meta.appendChild(time);
+        meta.appendChild(status);
+
+        wrapper.appendChild(bubble);
+        wrapper.appendChild(meta);
+
+        return wrapper;
+    }
+
+    getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    }
+}
