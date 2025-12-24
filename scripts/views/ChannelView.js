@@ -77,5 +77,5 @@ export default class ChannelView extends ViewBase {
         this.rootElement.classList.add("hidden");
     }
 
-
+    
 }
